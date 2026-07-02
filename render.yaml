@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: tutorial-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: tutorial-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: tutorial-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: tutorial-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: tutorial-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: tutorial-db
+          property: database
+ 
+databases:
+  - name: tutorial-db
+    plan: free
